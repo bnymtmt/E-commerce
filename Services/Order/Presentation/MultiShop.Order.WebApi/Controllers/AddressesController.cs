@@ -19,7 +19,7 @@ namespace MultiShop.Order.WebApi.Controllers
         public AddressesController(GetAddressQueryHandler getAddressQueryHandler, GetAddressByIdQueryHandler getAddressGetByIdQueryHandler, CreateAddressCommandHandler createAddressCommandHandler, UpdateAddressCommandHandler updateAddressCommandHandler, RemoveAddressCommandHandler removeAddressCommandHandler)
         {
             _getAddressQueryHandler = getAddressQueryHandler;
-            _getAddressByIdQueryHandler = _getAddressByIdQueryHandler;
+            _getAddressByIdQueryHandler = getAddressGetByIdQueryHandler; // ✅ doğru
             _createAddressCommandHandler = createAddressCommandHandler;
             _updateAddressCommandHandler = updateAddressCommandHandler;
             _removeAddressCommandHandler = removeAddressCommandHandler;
@@ -34,6 +34,12 @@ namespace MultiShop.Order.WebApi.Controllers
         public async Task<IActionResult> GetAddressById(int id)
         {
             var values = await _getAddressByIdQueryHandler.Handle(new GetAddressByIdQuery(id));
+
+            if (values == null)
+            {
+                return NotFound($"Address with ID {id} not found.");
+            }
+
             return Ok(values);
         }
         [HttpPost]
