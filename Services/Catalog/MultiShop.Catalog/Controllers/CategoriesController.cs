@@ -6,8 +6,8 @@ using MultiShop.Catalog.Services.CategoryServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
+	[Authorize]
+	[Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
@@ -17,30 +17,35 @@ namespace MultiShop.Catalog.Controllers
         {
             _categoryService = categoryService;
         }
+
         [HttpGet]
-        public async Task<IActionResult> CaregoryList()
+        public async Task<IActionResult> CategoryList()
         {
             var values = await _categoryService.GetAllCategoryAsync();
             return Ok(values);
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategoryById(string id)
         {
-            var values =await _categoryService.GetByIdCategoryAsync(id);
-            return Ok(values);
+            var value = await _categoryService.GetByIdCategoryAsync(id);
+            return Ok(value);
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
             await _categoryService.CreateCategoryAsync(createCategoryDto);
-            return Ok("Kategori başarıyla eklendi");
+            return Ok("Kategori başarıyla eklendi !");
         }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteCategory(string id)
         {
             await _categoryService.DeleteCategoryAsync(id);
-            return Ok("Kategori başarıyla silindi");
+            return Ok("Kategori başarıyla silindi !");
         }
+
         [HttpPut]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {

@@ -1,51 +1,69 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductDtos;
 using MultiShop.Catalog.Services.ProductServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
+	[Authorize]
+	[Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductService _ProductService;
+        private readonly IProductService _productService;
 
-        public ProductsController(IProductService ProductService)
+        public ProductsController(IProductService productService)
         {
-            _ProductService = ProductService;
+            _productService = productService;
         }
+
         [HttpGet]
-        public async Task<IActionResult> CaregoryList()
+        public async Task<IActionResult> ProductList()
         {
-            var values = await _ProductService.GetAllProductAsync();
+            var values = await _productService.GetAllProductAsync();
             return Ok(values);
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(string id)
         {
-            var values = await _ProductService.GetByIdProductAsync(id);
-            return Ok(values);
+            var value = await _productService.GetByIdProductAsync(id);
+            return Ok(value);
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
         {
-            await _ProductService.CreateProductAsync(createProductDto);
-            return Ok("Ürün başarıyla eklendi");
+            await _productService.CreateProductAsync(createProductDto);
+            return Ok("Ürün başarıyla eklendi !");
         }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteProduct(string id)
         {
-            await _ProductService.DeleteProductAsync(id);
-            return Ok("Ürün başarıyla silindi");
+            await _productService.DeleteProductAsync(id);
+            return Ok("Ürün başarıyla silindi !");
         }
+
         [HttpPut]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
-            await _ProductService.UpdateProductAsync(updateProductDto);
+            await _productService.UpdateProductAsync(updateProductDto);
             return Ok("Ürün başarıyla güncellendi");
+        }
+
+        [HttpGet("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory()
+        {
+            var values = await _productService.GetProductsWithCategoryAsync();
+            return Ok(values);
+        }
+
+        [HttpGet("ProductListWithCategoryByCategoryId/{id}")]
+        public async Task<IActionResult> ProductListWithCategoryByCategoryId(string id)
+        {
+            var values = await _productService.GetProductsWithCategoryByCategoryIdAsync(id);
+            return Ok(values);
         }
     }
 }
