@@ -15,30 +15,42 @@ namespace MultiShop.Catalog.Controllers
         {
             _ProductImageService = ProductImageService;
         }
+
         [HttpGet]
-        public async Task<IActionResult> CaregoryList()
+        public async Task<IActionResult> ProductImageList()
         {
             var values = await _ProductImageService.GetAllProductImageAsync();
             return Ok(values);
         }
+
+        [HttpGet("ProductImagesByProductId/{id}")]
+        public async Task<IActionResult> ProductImagesByProductId(string id)
+        {
+            var values = await _ProductImageService.GetByProductIdProductImageAsync(id);
+            return Ok(values);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductImageById(string id)
         {
-            var values = await _ProductImageService.GetByIdProductImageAsync(id);
-            return Ok(values);
+            var value = await _ProductImageService.GetByIdProductImageAsync(id);
+            return Ok(value);
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)
         {
             await _ProductImageService.CreateProductImageAsync(createProductImageDto);
-            return Ok("Ürün görselleri başarıyla eklendi");
+            return Ok("Ürün görselleri başarıyla eklendi !");
         }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteProductImage(string id)
         {
             await _ProductImageService.DeleteProductImageAsync(id);
-            return Ok("Ürün görselleri başarıyla silindi");
+            return Ok("Ürün görselleri başarıyla silindi !");
         }
+
         [HttpPut]
         public async Task<IActionResult> UpdateProductImage(UpdateProductImageDto updateProductImageDto)
         {
