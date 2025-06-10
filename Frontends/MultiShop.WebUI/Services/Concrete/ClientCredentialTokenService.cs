@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using MultiShop.DtoLayer.IdentityDtos.LoginDtos;
 using MultiShop.WebUI.Services.Interfaces;
 using MultiShop.WebUI.Settings;
+using System.Threading.Tasks;
 
 namespace MultiShop.WebUI.Services.Concrete
 {
