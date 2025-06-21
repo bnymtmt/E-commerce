@@ -4,13 +4,13 @@ Welcome to **MultiShop**, a full-featured microservices-based e-commerce applica
 
 This project represents a realistic and modular architecture, where each domain (catalog, basket, order, identity, etc.) is developed and deployed as an independent microservice. Throughout the project, I applied best practices in backend development, security, and DevOps.
 
-## 🚀 What I Built
+##  What I Built
 
 I designed and implemented this project from the ground up in a clean solution structure, focusing on **modularity, scalability, and real-world use cases**. The goal was to simulate a real e-commerce experience, with separate authorization flows for **admin**, **user**, and **guest** roles.
 
 The backend consists of several independently running microservices communicating via HTTP and asynchronous messaging, containerized using **Docker**. I integrated multiple data storage technologies and designed secure APIs using **JWT Bearer Tokens** and **IdentityServer4**.
 
-## 🧩 Technologies Used
+##  Technologies Used
 
 - **ASP.NET Core Web API**
 - **Microservices Architecture**
@@ -35,14 +35,14 @@ The backend consists of several independently running microservices communicatin
 - **Ajax** interactions
 - **RapidAPI integrations**
 
-## 🔐 Role-Based Access
+##  Role-Based Access
 
 Each type of user in the system experiences a different set of functionalities:
 - **Admin**: Full access to manage products, users, orders, etc.
 - **User**: Purchase products, manage basket, view orders.
 - **Guest**: Can browse the store with limited access.
 
-## 📦 Services (Microservice Domains)
+##  Services (Microservice Domains)
 
 - **Catalog Service** – Product management
 - **Basket Service** – Shopping cart management with Redis
@@ -52,7 +52,7 @@ Each type of user in the system experiences a different set of functionalities:
 - **Gateway Service** – Routing and authentication control via Ocelot
 - **Discount, Payment, and Notification Services** (optional extensions)
 
-## 💡 What I Learned
+##  What I Learned
 
 - How to build scalable .NET microservices with secure communication
 - Deep integration of **IdentityServer** for custom authentication flows
@@ -62,7 +62,7 @@ Each type of user in the system experiences a different set of functionalities:
 - Real-world API documentation and testing via Swagger and Postman
 - How to develop a project end-to-end and publish it to a live environment
 
-## 📌 Final Thoughts
+##  Final Thoughts
 
 This project helped me consolidate and apply what I’ve learned in enterprise-level .NET development. It's ideal for anyone looking to explore **microservices**, **API security**, and **multi-database integrations** in .NET.
 
@@ -70,4 +70,4 @@ This project helped me consolidate and apply what I’ve learned in enterprise-l
 
 Thanks for checking out my project!
 
-Feel free to clone, fork, or contribute ✌  
+Feel free to clone, fork, or contribute  
