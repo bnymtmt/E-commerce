@@ -1,4 +1,5 @@
 ﻿using IdentityModel.AspNetCore.AccessTokenManagement;
+using Duende.AccessTokenManagement;
 using IdentityModel.Client;
 using Microsoft.Extensions.Options;
 using MultiShop.DtoLayer.IdentityDtos.LoginDtos;
