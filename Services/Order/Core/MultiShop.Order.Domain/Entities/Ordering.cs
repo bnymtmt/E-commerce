@@ -13,6 +13,5 @@ namespace MultiShop.Order.Domain.Entities
         public decimal TotalPrice { get; set; }
         public DateTime OrderDate { get; set; }
         public List<OrderDetail> OrderDetails { get; set; }
-
     }
 }

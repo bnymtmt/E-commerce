@@ -17,18 +17,18 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers
         {
             _repository = repository;
         }
+
         public async Task<List<GetAddressQueryResult>> Handle()
         {
-            var values =await _repository.GetAllAsync();
-            return values.Select(x=>new GetAddressQueryResult
+            var values = await _repository.GetAllAsync();
+            return values.Select(x => new GetAddressQueryResult
             {
                 AddressId = x.AddressId,
                 City = x.City,
-                Detail=x.Detail,
+                Detail = x.Detail1,
                 District = x.District,
                 UserId = x.UserId
             }).ToList();
-
         }
     }
 }

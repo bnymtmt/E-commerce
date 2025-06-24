@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiShop.Order.Application.Features.Mediator.Result.OrderingResults
+namespace MultiShop.Order.Application.Features.Mediator.Results.OrderingResults
 {
-    public class GetOrderingByIdQueryResult
+    public class GetOrderingQueryResult
     {
         public int OrderingId { get; set; }
         public string UserId { get; set; }

@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.Mediator.Commands.OrderingCommands;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
@@ -29,28 +28,36 @@ namespace MultiShop.Order.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderingById(int id)
         {
-            var values = await _mediator.Send(new GetOrderingByIdQuery(id));
+            var value = await _mediator.Send(new GetOrderingByIdQuery(id));
+            return Ok(value);
+        }
+
+        [HttpGet("GetOrderingByUserId")]
+        public async Task<IActionResult> GetOrderingByUserId(string id)
+        {
+            var values = await _mediator.Send(new GetOrderingByUserIdQuery(id));
             return Ok(values);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> CreateOrdering(CreateOrderingCommand command)
         {
             await _mediator.Send(command);
-            return Ok("Sipariş başarıyla yüklendi.");
-        }   
+            return Ok("Sipariş başarıyla oluşturuldu !");
+        }
+
         [HttpDelete]
         public async Task<IActionResult> RemoveOrdering(int id)
         {
             await _mediator.Send(new RemoveOrderingCommand(id));
-            return Ok("Sipariş başarıyla silindi.");
+            return Ok("Sipariş başarıyla silindi !");
         }
-        
+
         [HttpPut]
         public async Task<IActionResult> UpdateOrdering(UpdateOrderingCommand command)
         {
             await _mediator.Send(command);
-            return Ok("Sipariş başarıyla güncellendi.");
+            return Ok("Sipariş başarıyla güncellendi !");
         }
     }
 }

@@ -11,22 +11,21 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers
 {
     public class UpdateAddressCommandHandler
     {
-        private IRepository<Address> _repository;
+        private readonly IRepository<Address> _repository;
+
         public UpdateAddressCommandHandler(IRepository<Address> repository)
         {
             _repository = repository;
         }
+
         public async Task Handle(UpdateAddressCommand command)
         {
-            var values = await _repository.GetByIdAsync(command.AddressId);
-            if (values != null)
-            {
-                values.City = command.City;
-                values.District = command.District;
-                values.Detail = command.Detail;
-                values.UserId = command.UserId;
-                await _repository.UpdateAsync(values);
-            }
+            var value = await _repository.GetByIdAsync(command.AddressId);
+            value.City = command.City;
+            value.Detail1 = command.Detail;
+            value.District = command.District;
+            value.UserId = command.UserId;
+            await _repository.UpdateAsync(value);
         }
     }
 }

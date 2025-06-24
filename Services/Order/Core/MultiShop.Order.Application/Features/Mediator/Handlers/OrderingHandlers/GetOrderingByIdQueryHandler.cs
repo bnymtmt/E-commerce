@@ -1,8 +1,13 @@
 ﻿using MediatR;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
-using MultiShop.Order.Application.Features.Mediator.Result.OrderingResults;
+using MultiShop.Order.Application.Features.Mediator.Results.OrderingResults;
 using MultiShop.Order.Application.Interfaces;
 using MultiShop.Order.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandlers
 {
@@ -20,11 +25,10 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
             var value = await _repository.GetByIdAsync(request.Id);
             return new GetOrderingByIdQueryResult
             {
-                OrderingId =value.OrderingId,
                 OrderDate = value.OrderDate,
+                OrderingId = value.OrderingId,
                 TotalPrice = value.TotalPrice,
                 UserId = value.UserId
-
             };
         }
     }

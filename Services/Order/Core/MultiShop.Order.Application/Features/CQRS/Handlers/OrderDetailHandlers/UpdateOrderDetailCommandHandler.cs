@@ -11,27 +11,23 @@ namespace MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers
 {
     public class UpdateOrderDetailCommandHandler
     {
-        private IRepository<OrderDetail> _repository;
+        private readonly IRepository<OrderDetail> _repository;
+
         public UpdateOrderDetailCommandHandler(IRepository<OrderDetail> repository)
         {
             _repository = repository;
         }
+
         public async Task Handle(UpdateOrderDetailCommand command)
         {
-            var values = await _repository.GetByIdAsync(command.OrderDetailId);
-            if (values != null)
-            {
-                values.OrderDetailId = command.OrderDetailId;
-                values.OrderingId = command.OrderingId;
-                values.ProductId
-                    = command.ProductId;
-                values.ProductName = command.ProductName;
-                values.ProductPrice = command.ProductPrice;
-                values.ProductTotalPrice = command.ProductTotalPrice;
-                values.ProductAmount = command.ProductAmount;
-
-                await _repository.UpdateAsync(values);
-            }
+            var value = await _repository.GetByIdAsync(command.OrderDetailId);
+            value.OrderingId = command.OrderingId;
+            value.ProductId = command.ProductId;
+            value.ProductPrice = command.ProductPrice;
+            value.ProductTotalPrice = command.ProductTotalPrice;
+            value.ProductAmount = command.ProductAmount;
+            value.ProductName = command.ProductName;
+            await _repository.UpdateAsync(value);
         }
     }
 }

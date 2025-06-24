@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MultiShop.Order.Application.Features.Mediator.Result.OrderingResults;
+using MultiShop.Order.Application.Features.Mediator.Results.OrderingResults;
 using System;
 using System.Collections.Generic;
 using System.Linq;

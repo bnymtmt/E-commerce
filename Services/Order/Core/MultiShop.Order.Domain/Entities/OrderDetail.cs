@@ -16,7 +16,5 @@ namespace MultiShop.Order.Domain.Entities
         public decimal ProductTotalPrice { get; set; }
         public int OrderingId { get; set; }
         public Ordering Ordering { get; set; }
-
-
     }
 }
