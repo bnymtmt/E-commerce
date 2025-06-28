@@ -9,7 +9,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     {
         private readonly IUserIdentityService _userIdentityService;
         private readonly ICargoCustomerService _cargoCustomerService;
-
         public UserController(IUserIdentityService userIdentityService, ICargoCustomerService cargoCustomerService)
         {
             _userIdentityService = userIdentityService;
@@ -24,8 +23,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> UserAddressInfo(string id)
         {
-            var value = await _cargoCustomerService.GetByIdCargoCustomerInfoAsync(id);
-            return View(value);
+            var values =await _cargoCustomerService.GetByIdCargoCustomerInfoAsync(id);
+            return View(values);
         }
     }
 }

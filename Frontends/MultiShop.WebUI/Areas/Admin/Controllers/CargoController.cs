@@ -9,7 +9,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class CargoController : Controller
     {
         private readonly ICargoCompanyService _cargoCompanyService;
-
         public CargoController(ICargoCompanyService cargoCompanyService)
         {
             _cargoCompanyService = cargoCompanyService;
@@ -34,30 +33,30 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> CreateCargoCompany(CreateCargoCompanyDto createCargoCompanyDto)
         {
             await _cargoCompanyService.CreateCargoCompanyAsync(createCargoCompanyDto);
-            return RedirectToAction("CargoCompanyList", "Cargo", new { area = "Admin" });
+            return RedirectToAction("CargoCompanyList", "Cargo", new { Area = "Admin" });
         }
+
 
         [Route("DeleteCargoCompany/{id}")]
         public async Task<IActionResult> DeleteCargoCompany(int id)
         {
             await _cargoCompanyService.DeleteCargoCompanyAsync(id);
-            return RedirectToAction("CargoCompanyList", "Cargo", new { area = "Admin" });
+            return RedirectToAction("CargoCompanyList", "Cargo", new { Area = "Admin" });
         }
 
         [HttpGet]
         [Route("UpdateCargoCompany/{id}")]
         public async Task<IActionResult> UpdateCargoCompany(int id)
         {
-            var value = await _cargoCompanyService.GetByIdCargoCompanyAsync(id);
-            return View(value);
+            var values = await _cargoCompanyService.GetByIdCargoCompanyAsync(id);
+            return View(values);
         }
-
         [HttpPost]
         [Route("UpdateCargoCompany")]
         public async Task<IActionResult> UpdateCargoCompany(UpdateCargoCompanyDto updateCargoCompanyDto)
         {
             await _cargoCompanyService.UpdateCargoCompanyAsync(updateCargoCompanyDto);
-            return RedirectToAction("CargoCompanyList", "Cargo", new { area = "Admin" });
+            return RedirectToAction("CargoCompanyList", "Cargo", new { Area = "Admin" });
         }
     }
 }

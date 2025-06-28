@@ -6,12 +6,10 @@ namespace MultiShop.WebUI.Services.CargoServices.CargoCompanyServices
     public class CargoCompanyService : ICargoCompanyService
     {
         private readonly HttpClient _httpClient;
-
         public CargoCompanyService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-
         public async Task CreateCargoCompanyAsync(CreateCargoCompanyDto createCargoCompanyDto)
         {
             await _httpClient.PostAsJsonAsync<CreateCargoCompanyDto>("CargoCompanies", createCargoCompanyDto);
@@ -32,9 +30,9 @@ namespace MultiShop.WebUI.Services.CargoServices.CargoCompanyServices
 
         public async Task<UpdateCargoCompanyDto> GetByIdCargoCompanyAsync(int id)
         {
-            var repsonseMessage = await _httpClient.GetAsync("CargoCompanies/" + id);
-            var value = await repsonseMessage.Content.ReadFromJsonAsync<UpdateCargoCompanyDto>();
-            return value;
+            var responseMessage = await _httpClient.GetAsync("CargoCompanies/" + id);
+            var values = await responseMessage.Content.ReadFromJsonAsync<UpdateCargoCompanyDto>();
+            return values;
         }
 
         public async Task UpdateCargoCompanyAsync(UpdateCargoCompanyDto updateCargoCompanyDto)

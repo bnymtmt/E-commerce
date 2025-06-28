@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -8,19 +11,12 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Route("Admin/Category")]
     public class CategoryController : Controller
     {
+        private readonly IHttpClientFactory _httpClientFactory;
         private readonly ICategoryService _categoryService;
-
-        public CategoryController(ICategoryService categoryService)
+        public CategoryController(IHttpClientFactory httpClientFactory, ICategoryService categoryService)
         {
+            _httpClientFactory = httpClientFactory;
             _categoryService = categoryService;
-        }
-
-        void CategoryViewbagList()
-        {
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Listesi";
-            ViewBag.v0 = "Kategori İşlemleri";
         }
 
         [Route("Index")]
@@ -54,21 +50,28 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "Category", new { area = "Admin" });
         }
 
-        [HttpGet]
         [Route("UpdateCategory/{id}")]
+        [HttpGet]
         public async Task<IActionResult> UpdateCategory(string id)
         {
             CategoryViewbagList();
             var values = await _categoryService.GetByIdCategoryAsync(id);
             return View(values);
         }
-
-        [HttpPost]
         [Route("UpdateCategory/{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
             await _categoryService.UpdateCategoryAsync(updateCategoryDto);
             return RedirectToAction("Index", "Category", new { area = "Admin" });
+        }
+
+        void CategoryViewbagList()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kategoriler";
+            ViewBag.v3 = "Kategori Listesi";
+            ViewBag.v0 = "Kategori İşlemleri";
         }
     }
 }

@@ -12,7 +12,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class SpecialOfferController : Controller
     {
         private readonly ISpecialOfferService _specialOfferService;
-
         public SpecialOfferController(ISpecialOfferService specialOfferService)
         {
             _specialOfferService = specialOfferService;
@@ -22,8 +21,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Özel Teklifler";
-            ViewBag.v3 = "Özel Teklif ve Günün İndirimi Listesi";
-            ViewBag.v0 = "Özel Teklif İşlemleri";
+            ViewBag.v3 = "Özel Teklif ve Günün İndirim Listesi";
+            ViewBag.v0 = "Kategori İşlemleri";
         }
 
         [Route("Index")]
@@ -57,17 +56,16 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
         }
 
-        [HttpGet]
         [Route("UpdateSpecialOffer/{id}")]
+        [HttpGet]
         public async Task<IActionResult> UpdateSpecialOffer(string id)
         {
             SpecialOfferViewBagList();
             var values = await _specialOfferService.GetByIdSpecialOfferAsync(id);
             return View(values);
         }
-
-        [HttpPost]
         [Route("UpdateSpecialOffer/{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto)
         {
             await _specialOfferService.UpdateSpecialOfferAsync(updateSpecialOfferDto);

@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -12,13 +16,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
-
         public ProductController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
             _categoryService = categoryService;
         }
-
         void ProductViewBagList()
         {
             ViewBag.v1 = "Ana Sayfa";
@@ -39,21 +41,20 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> ProductListWithCategory()
         {
             ProductViewBagList();
+
             //var client = _httpClientFactory.CreateClient();
             //var responseMessage = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategory");
-
             //if (responseMessage.IsSuccessStatusCode)
             //{
             //    var jsonData = await responseMessage.Content.ReadAsStringAsync();
             //    var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
             //    return View(values);
             //}
-
             return View();
         }
 
-        [HttpGet]
         [Route("CreateProduct")]
+        [HttpGet]
         public async Task<IActionResult> CreateProduct()
         {
             ProductViewBagList();
@@ -62,7 +63,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                                                    select new SelectListItem
                                                    {
                                                        Text = x.CategoryName,
-                                                       Value = x.CategoryId
+                                                       Value = x.CategoryID
                                                    }).ToList();
             ViewBag.CategoryValues = categoryValues;
             return View();
@@ -83,17 +84,18 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
 
-        [HttpGet]
         [Route("UpdateProduct/{id}")]
+        [HttpGet]
         public async Task<IActionResult> UpdateProduct(string id)
         {
             ProductViewBagList();
+
             var values = await _categoryService.GetAllCategoryAsync();
             List<SelectListItem> categoryValues = (from x in values
                                                    select new SelectListItem
                                                    {
                                                        Text = x.CategoryName,
-                                                       Value = x.CategoryId
+                                                       Value = x.CategoryID
                                                    }).ToList();
             ViewBag.CategoryValues = categoryValues;
 
@@ -101,8 +103,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return View(productValues);
         }
 
-        [HttpPost]
         [Route("UpdateProduct/{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
         {
             await _productService.UpdateProductAsync(updateProductDto);

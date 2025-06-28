@@ -12,7 +12,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class BrandController : Controller
     {
         private readonly IBrandService _brandService;
-
         public BrandController(IBrandService brandService)
         {
             _brandService = brandService;
@@ -57,8 +56,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index", "Brand", new { area = "Admin" });
         }
 
-        [HttpGet]
         [Route("UpdateBrand/{id}")]
+        [HttpGet]
         public async Task<IActionResult> UpdateBrand(string id)
         {
             BrandViewBagList();
@@ -66,8 +65,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return View(values);
         }
 
-        [HttpPost]
         [Route("UpdateBrand/{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateBrand(UpdateBrandDto updateBrandDto)
         {
             await _brandService.UpdateBrandAsync(updateBrandDto);

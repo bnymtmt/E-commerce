@@ -11,26 +11,17 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Route("Admin/About")]
     public class AboutController : Controller
     {
-        private readonly IAboutService _aboutService;
-
-        public AboutController(IAboutService aboutService)
+        private readonly IAboutService _AboutService;
+        public AboutController(IAboutService AboutService)
         {
-            _aboutService = aboutService;
-        }
-
-        void AboutViewBagList()
-        {
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Hakkımda";
-            ViewBag.v3 = "Hakkımda Listesi";
-            ViewBag.v0 = "Hakkımda İşlemleri";
+            _AboutService = AboutService;
         }
 
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
-            AboutViewBagList();
-            var values = await _aboutService.GetAllAboutAsync();
+            AboutViewbagList();
+            var values = await _AboutService.GetAllAboutAsync();
             return View(values);
         }
 
@@ -38,7 +29,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateAbout")]
         public IActionResult CreateAbout()
         {
-            AboutViewBagList();
+            AboutViewbagList();
             return View();
         }
 
@@ -46,32 +37,39 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateAbout")]
         public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
         {
-            await _aboutService.CreateAboutAsync(createAboutDto);
+            await _AboutService.CreateAboutAsync(createAboutDto);
             return RedirectToAction("Index", "About", new { area = "Admin" });
         }
 
         [Route("DeleteAbout/{id}")]
         public async Task<IActionResult> DeleteAbout(string id)
         {
-            await _aboutService.DeleteAboutAsync(id);
+            await _AboutService.DeleteAboutAsync(id);
             return RedirectToAction("Index", "About", new { area = "Admin" });
         }
 
-        [HttpGet]
         [Route("UpdateAbout/{id}")]
+        [HttpGet]
         public async Task<IActionResult> UpdateAbout(string id)
         {
-            AboutViewBagList();
-            var values = await _aboutService.GetByIdAboutAsync(id);
+            AboutViewbagList();
+            var values = await _AboutService.GetByIdAboutAsync(id);
             return View(values);
         }
-
-        [HttpPost]
         [Route("UpdateAbout/{id}")]
+        [HttpPost]
         public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
         {
-            await _aboutService.UpdateAboutAsync(updateAboutDto);
+            await _AboutService.UpdateAboutAsync(updateAboutDto);
             return RedirectToAction("Index", "About", new { area = "Admin" });
+        }
+
+        void AboutViewbagList()
+        {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Hakkımda";
+            ViewBag.v3 = "Hakkımda Listesi";
+            ViewBag.v0 = "Hakkımda İşlemleri";
         }
     }
 }

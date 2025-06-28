@@ -7,7 +7,7 @@ namespace MultiShop.Comment.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1442;initial Catalog=MultiShopCommentDb;User=sa;Password=123456aA*");
+            optionsBuilder.UseSqlServer("Server=localhost,1442;initial Catalog=MultiShopCommentDb;User=sa;Password=Tmttmt1717#");
         }
 
         public DbSet<UserComment> UserComments { get; set; }
