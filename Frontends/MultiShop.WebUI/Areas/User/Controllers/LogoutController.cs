@@ -2,8 +2,7 @@
 
 namespace MultiShop.WebUI.Areas.User.Controllers
 {
-    [Area("User")]
-    public class LogoutController : Controller
+    public class LogOutController : Controller
     {
         public IActionResult Index()
         {

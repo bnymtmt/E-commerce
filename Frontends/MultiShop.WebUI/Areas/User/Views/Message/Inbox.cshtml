@@ -18,7 +18,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Gönderen Kişi</th>
+                                        <th>Gönderen</th>
                                         <th>Konu</th>
                                         <th>Tarih</th>
                                         <th>Durum</th>
@@ -36,8 +36,8 @@
                                             <td>@item.Subject</td>
                                             <td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
                                             <td>@item.IsRead</td>
-                                            <td><a href="#" class="btn btn-danger btn-smaller">Sil</a></td>
-                                            <td><a href="#" class="btn btn-info btn-smaller">Mesajı Aç</a></td>
+                                            <td><a href="#" class="btn btn-danger">Sil</a></td>
+                                            <td><a href="#" class="btn btn-info">Mesajı Aç</a></td>
                                         </tr>
                                     }
                                 </tbody>

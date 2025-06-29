@@ -14,7 +14,6 @@ namespace MultiShop.WebUI.Areas.User.Controllers
             _messageService = messageService;
             _userService = userService;
         }
-
         public async Task<IActionResult> Inbox()
         {
             var user = await _userService.GetUserInfo();

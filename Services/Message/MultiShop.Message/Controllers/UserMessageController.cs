@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MultiShop.Message.DTOs;
+using MultiShop.Message.Dtos;
 using MultiShop.Message.Services;
 
 namespace MultiShop.Message.Controllers
@@ -10,7 +10,6 @@ namespace MultiShop.Message.Controllers
     public class UserMessageController : ControllerBase
     {
         private readonly IUserMessageService _userMessageService;
-
         public UserMessageController(IUserMessageService userMessageService)
         {
             _userMessageService = userMessageService;
@@ -33,7 +32,7 @@ namespace MultiShop.Message.Controllers
         [HttpGet("GetMessageInbox")]
         public async Task<IActionResult> GetMessageInbox(string id)
         {
-            var values = await _userMessageService.GetInboxMessageAsync (id);
+            var values = await _userMessageService.GetInboxMessageAsync(id);
             return Ok(values);
         }
 
@@ -41,27 +40,35 @@ namespace MultiShop.Message.Controllers
         public async Task<IActionResult> CreateMessageAsync(CreateMessageDto createMessageDto)
         {
             await _userMessageService.CreateMessageAsync(createMessageDto);
-            return Ok("Mesaj başarıyla eklendi !");
+            return Ok("Mesaj başarıyla eklendi");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteMessageAsync(int id)
         {
             await _userMessageService.DeleteMessageAsync(id);
-            return Ok("Mesaj başarıyla silindi !");
+            return Ok("Mesaj başarıyla silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateMessageAsync(UpdateMessageDto updateMessageDto)
         {
             await _userMessageService.UpdateMessageAsync(updateMessageDto);
-            return Ok("Mesaj başarıyla güncellendi !");
+            return Ok("Mesaj başarıyla güncellendi");
         }
 
         [HttpGet("GetTotalMessageCount")]
         public async Task<IActionResult> GetTotalMessageCount()
         {
-            return Ok(await _userMessageService.GetTotalMessageCount());
+            int values = await _userMessageService.GetTotalMessageCount();
+            return Ok(values);
+        }
+
+        [HttpGet("GetTotalMessageCountByReceiverId")]
+        public async Task<IActionResult> GetTotalMessageCountByReceiverId(string id)
+        {
+            int values = await _userMessageService.GetTotalMessageCountByReceiverId(id);
+            return Ok(values);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Message.DTOs
+﻿namespace MultiShop.Message.Dtos
 {
     public class GetByIdMessageDto
     {

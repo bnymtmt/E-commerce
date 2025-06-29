@@ -28,13 +28,13 @@
                             {
                                 count++;
                                 <tr>
-                                    <th scope="row" style="text-align:left; vertical-align:middle;">@count</th>
-                                    <td style="text-align:left; vertical-align:middle;">@item.NameSurname</td>
-                                    <td style="text-align:left; vertical-align:middle;">@item.CommentDetail</td>
-                                    <td style="text-align:left; vertical-align:middle;">@item.CreatedDate.ToShortDateString()</td>
-                                    <td style="text-align:left; vertical-align:middle;">@item.Status</td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Comment/DeleteComment/@item.UserCommentId" class="btn btn-danger">Sil</a></td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Comment/UpdateComment/@item.UserCommentId" class="btn btn-success">Güncelle</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.NameSurname</td>
+                                    <td>@item.CommentDetail</td>
+                                    <td>@item.CreatedDate.ToShortDateString()</td>
+                                    <td>@item.Status</td>
+                                    <td><a href="/Admin/Comment/DeleteComment/@item.UserCommentId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Comment/UpdateComment/@item.UserCommentId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>

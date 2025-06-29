@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "CargoCompanyList";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
-    int count = 0; 
+    int count = 0;
 }
 
 <section class="content container-fluid">
@@ -25,17 +25,21 @@
                             {
                                 count++;
                                 <tr>
-                                    <th scope="row" style="text-align:left; vertical-align:middle;">@count</th>
-                                    <td style="text-align:left; vertical-align:middle;">@item.CargoCompanyName</td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Cargo/DeleteCargoCompany/@item.CargoCompanyId" class="btn btn-danger">Sil</a></td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Cargo/UpdateCargoCompany/@item.CargoCompanyId" class="btn btn-success">Güncelle</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.CargoCompanyName</td>
+                                    <td><a href="/Admin/Cargo/DeleteCargoCompany/@item.CargoCompanyId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Cargo/UpdateCargoCompany/@item.CargoCompanyId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/Cargo/CreateCargoCompany/" class="btn btn-primary">Yeni Kargo Firması Oluştur</a></>
+                    <a href="/Admin/Cargo/CreateCargoCompany/" class="btn btn-primary">Yeni Kargo Firması Girişi</a>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </section>
+

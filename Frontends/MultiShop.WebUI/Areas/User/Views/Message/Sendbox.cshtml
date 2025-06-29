@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Sendbox";
     Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
-    var count = 0;
+    int count = 0;
 }
 
 <div class="main-panel">
@@ -36,8 +36,8 @@
                                             <td>@item.Subject</td>
                                             <td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
                                             <td>@item.IsRead</td>
-                                            <td><a href="#" class="btn btn-danger btn-smaller">Sil</a></td>
-                                            <td><a href="#" class="btn btn-info btn-smaller">Mesajı Aç</a></td>
+                                            <td><a href="#" class="btn btn-danger">Sil</a></td>
+                                            <td><a href="#" class="btn btn-info">Mesajı Aç</a></td>
                                         </tr>
                                     }
                                 </tbody>

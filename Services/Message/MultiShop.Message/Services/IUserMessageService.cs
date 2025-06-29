@@ -1,4 +1,4 @@
-﻿using MultiShop.Message.DTOs;
+﻿using MultiShop.Message.Dtos;
 
 namespace MultiShop.Message.Services
 {
@@ -12,6 +12,6 @@ namespace MultiShop.Message.Services
         Task DeleteMessageAsync(int id);
         Task<GetByIdMessageDto> GetByIdMessageAsync(int id);
         Task<int> GetTotalMessageCount();
-
+        Task<int> GetTotalMessageCountByReceiverId(string id);
     }
 }

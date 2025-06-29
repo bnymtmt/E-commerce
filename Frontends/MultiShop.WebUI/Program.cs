@@ -26,6 +26,7 @@ using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
 using MultiShop.WebUI.Services.UserIdentityServices;
 using MultiShop.WebUI.Settings;
 using Duende.AccessTokenManagement;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 
 
@@ -180,6 +181,11 @@ builder.Services.AddHttpClient<IContactService, ContactService>(opt =>
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.AddMvc()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -198,6 +204,11 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+var supportedCultures = new[] { "en-US", "tr-TR" ,"fr","de" };
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[1]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
+
 
 app.MapControllerRoute(
     name: "default",

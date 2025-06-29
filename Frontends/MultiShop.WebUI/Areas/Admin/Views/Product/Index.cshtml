@@ -26,16 +26,16 @@
                             {
                                 count++;
                                 <tr>
-                                    <th scope="row" style="text-align:left; vertical-align:middle;">@count</th>
-                                    <td style="text-align:left; vertical-align:middle;">@item.ProductName</td>
-                                    <td style="text-align:left; vertical-align:middle;">@item.ProductPrice</td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.ProductPrice</td>
+                                    <td><a href="/Admin/Product/DeleteProduct/@item.ProductId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Product/UpdateProduct/@item.ProductId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/Product/CreateProduct/" class="btn btn-primary">Ürün Oluştur</a></>
+                    <a href="/Admin/Product/CreateProduct/" class="btn btn-primary">Yeni Ürün Girişi</a>
                 </div>
             </div>
         </div>

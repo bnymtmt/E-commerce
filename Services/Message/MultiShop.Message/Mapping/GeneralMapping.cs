@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MultiShop.Message.DAL.Entities;
-using MultiShop.Message.DTOs;
+using MultiShop.Message.Dtos;
 
 namespace MultiShop.Message.Mapping
 {

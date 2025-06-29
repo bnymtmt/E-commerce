@@ -4,9 +4,10 @@
     <div class="row px-xl-5">
         <div class="col">
             <div class="owl-carousel vendor-carousel">
-                @foreach (var item in Model)
+               
+                @foreach(var item in Model)
                 {
-                    <div class="bg-light p-4" style="width:250px; height:250px; justify-content:center; display:flex; align-items:center;">
+                    <div class="bg-light p-4" style="height:120px;width:150px">
                         <img src="@item.ImageUrl" alt="">
                     </div>
                 }

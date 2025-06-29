@@ -8,6 +8,7 @@
 
 <section class="content container-fluid">
     <div class="row">
+
         <div class="col-md-12">
             <div class="chart-box">
                 <div class="bs-example" data-example-id="bordered-table">
@@ -15,7 +16,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Başlık</th>
+                                <th>Görsel Başlığı</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                             </tr>
@@ -25,17 +26,18 @@
                             {
                                 count++;
                                 <tr>
-                                    <th scope="row" style="text-align:left; vertical-align:middle;">@count</th>
-                                    <td style="text-align:left; vertical-align:middle;">@item.Title</td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/FeatureSlider/DeleteFeatureSlider/@item.FeatureSliderId" class="btn btn-danger">Sil</a></td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/FeatureSlider/UpdateFeatureSlider/@item.FeatureSliderId" class="btn btn-success">Güncelle</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Title</td>
+                                    <td><a href="/Admin/FeatureSlider/DeleteFeatureSlider/@item.FeatureSliderId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/FeatureSlider/UpdateFeatureSlider/@item.FeatureSliderId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/FeatureSlider/CreateFeatureSlider/" class="btn btn-primary">Yeni Slider Görseli Oluştur</a></>
+                    <a href="/Admin/FeatureSlider/CreateFeatureSlider/" class="btn btn-primary">Yeni Slider Görsel Girişi</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+

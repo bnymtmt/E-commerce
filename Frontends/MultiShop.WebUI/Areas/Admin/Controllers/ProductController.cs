@@ -63,7 +63,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                                                    select new SelectListItem
                                                    {
                                                        Text = x.CategoryName,
-                                                       Value = x.CategoryID
+                                                       Value = x.CategoryId
                                                    }).ToList();
             ViewBag.CategoryValues = categoryValues;
             return View();
@@ -95,7 +95,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                                                    select new SelectListItem
                                                    {
                                                        Text = x.CategoryName,
-                                                       Value = x.CategoryID
+                                                       Value = x.CategoryId
                                                    }).ToList();
             ViewBag.CategoryValues = categoryValues;
 

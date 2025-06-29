@@ -26,11 +26,11 @@
                             {
                                 count++;
                                 <tr>
-                                    <th scope="row" style="text-align:left; vertical-align:middle;">@count</th>
-                                    <td style="text-align:left; vertical-align:middle;">@item.name @item.surname</td>
-                                    <td style="text-align:left; vertical-align:middle;">@item.userName</td>
-                                    <td style="text-align:left; vertical-align:middle;">@item.email</td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/User/UserAddressInfo/@item.id" class="btn btn-primary">Adres Detayı</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.name</td>
+                                    <td>@item.userName</td>
+                                    <td>@item.email</td>     
+                                    <td><a href="/Admin/User/UserAddressInfo/@item.id" class="btn btn-warning">Adres Detayı</a></td>
                                 </tr>
                             }
                         </tbody>

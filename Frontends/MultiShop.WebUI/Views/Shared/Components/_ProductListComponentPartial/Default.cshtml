@@ -1,7 +1,7 @@
 ﻿@model List<ResultProductWithCategoryDto>
 
 <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-    @foreach (var item in Model)
+    @foreach(var item in Model)
     {
         <div class="product-item bg-light mb-4">
             <div class="product-img position-relative overflow-hidden">
@@ -14,9 +14,9 @@
                 </div>
             </div>
             <div class="text-center py-4">
-                <a class="h6 text-decoration-none text-truncate" href="/ProductList/ProductDetail/@item.ProductId">@item.ProductName</a>
+                <a class="h6 text-decoration-none text-truncate" href="">@item.ProductName</a>
                 <div class="d-flex align-items-center justify-content-center mt-2">
-                    <h5>@item.ProductPrice ₺</h5><h6 class="text-muted ml-2"><del>₺ 4568.00</del></h6>
+                    <h5>@item.ProductPrice</h5><h6 class="text-muted ml-2"><del>000 ₺</del></h6>
                 </div>
                 <div class="d-flex align-items-center justify-content-center mb-1">
                     <small class="fa fa-star text-primary mr-1"></small>
@@ -29,4 +29,5 @@
             </div>
         </div>
     }
+    
 </div>

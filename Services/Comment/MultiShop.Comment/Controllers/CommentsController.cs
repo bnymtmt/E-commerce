@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Comment.Context;
 using MultiShop.Comment.Entities;
@@ -11,7 +12,6 @@ namespace MultiShop.Comment.Controllers
     public class CommentsController : ControllerBase
     {
         private readonly CommentContext _context;
-
         public CommentsController(CommentContext context)
         {
             _context = context;
@@ -24,19 +24,12 @@ namespace MultiShop.Comment.Controllers
             return Ok(values);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetCommentById(int id)
-        {
-            var values = _context.UserComments.Find(id);
-            return Ok(values);
-        }
-
         [HttpPost]
         public IActionResult CreateComment(UserComment userComment)
         {
             _context.UserComments.Add(userComment);
             _context.SaveChanges();
-            return Ok("Yorum başarıyla eklendi !");
+            return Ok("Yorum başarıyla eklendi");
         }
 
         [HttpDelete]
@@ -45,7 +38,14 @@ namespace MultiShop.Comment.Controllers
             var value = _context.UserComments.Find(id);
             _context.UserComments.Remove(value);
             _context.SaveChanges();
-            return Ok("Yorum başarıyla silindi !");
+            return Ok("Yorum başarıyla silindi");
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetComment(int id)
+        {
+            var value = _context.UserComments.Find(id);
+            return Ok(value);
         }
 
         [HttpPut]
@@ -53,7 +53,7 @@ namespace MultiShop.Comment.Controllers
         {
             _context.UserComments.Update(userComment);
             _context.SaveChanges();
-            return Ok("Yorum başarıyla güncellendi !");
+            return Ok("Yorum başarıyla güncellendi");
         }
 
         [HttpGet("CommentListByProductId/{id}")]
@@ -66,19 +66,22 @@ namespace MultiShop.Comment.Controllers
         [HttpGet("GetActiveCommentCount")]
         public IActionResult GetActiveCommentCount()
         {
-            return Ok(_context.UserComments.Where(x => x.Status == true).Count());
+            int value = _context.UserComments.Where(x => x.Status == true).Count();
+            return Ok(value);
         }
 
         [HttpGet("GetPassiveCommentCount")]
         public IActionResult GetPassiveCommentCount()
         {
-            return Ok(_context.UserComments.Where(x => x.Status == false).Count());
+            int value = _context.UserComments.Where(x => x.Status == false).Count();
+            return Ok(value);
         }
 
         [HttpGet("GetTotalCommentCount")]
         public IActionResult GetTotalCommentCount()
         {
-            return Ok(_context.UserComments.Count());
+            int value = _context.UserComments.Count();
+            return Ok(value);
         }
     }
 }

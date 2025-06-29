@@ -8,6 +8,7 @@
 
 <section class="content container-fluid">
     <div class="row">
+
         <div class="col-md-12">
             <div class="chart-box">
                 <div class="bs-example" data-example-id="bordered-table">
@@ -26,18 +27,22 @@
                             {
                                 count++;
                                 <tr>
-                                    <th scope="row" style="text-align:left; vertical-align:middle;">@count</th>
-                                    <td style="text-align:left; vertical-align:middle;">@item.BrandName</td>
-                                    <td style="text-align:center; vertical-align:middle;"><img src="@item.ImageUrl" style="width:75px; height:auto;"/></td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Brand/DeleteBrand/@item.BrandId" class="btn btn-danger">Sil</a></td>
-                                    <td style="text-align:left; vertical-align:middle;"><a href="/Admin/Brand/UpdateBrand/@item.BrandId" class="btn btn-success">Güncelle</a></td>
+                                    <th scope="row">@count</th>
+                                    <td>@item.BrandName</td>
+                                    <td><img src="@item.ImageUrl" style="width:50px; height:50px;"/> </td>
+                                    <td><a href="/Admin/Brand/DeleteBrand/@item.BrandId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Brand/UpdateBrand/@item.BrandId" class="btn btn-success">Güncelle</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/Brand/CreateBrand/" class="btn btn-primary">Marka Oluştur</a></>
+                    <a href="/Admin/Brand/CreateBrand/" class="btn btn-primary">Yeni Marka Girişi</a>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </section>
+
